@@ -1,0 +1,16 @@
+syntax = "proto3";
+package com.chat.grpc;
+
+message ChatRequest {
+  int64 chatId = 1;
+  string question = 2;
+}
+
+message ChatResponse {
+  int64 chatId = 1;
+  string answer = 2;
+}
+
+service ChatService {
+  rpc ask(ChatRequest) returns (ChatResponse);
+}

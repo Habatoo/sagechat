@@ -1,0 +1,5 @@
+server:
+  port : 6050
+
+grpc:
+  port: 6040
