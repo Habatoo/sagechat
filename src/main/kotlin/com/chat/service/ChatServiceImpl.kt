@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
 @Component
-class ChatServiceImpl : ChatServiceGrpc.ChatServiceImplBase() {
+class ChatServiceImpl(
+    private val answerService: AnswerService,
+) : ChatServiceGrpc.ChatServiceImplBase() {
     private val log = LoggerFactory.getLogger(ChatServiceImpl::class.java)
 
     override fun ask(
@@ -16,8 +18,7 @@ class ChatServiceImpl : ChatServiceGrpc.ChatServiceImplBase() {
     ) {
         log.info("For chat ${request.chatId} question ${request.question}")
 
-        val answer = "My answer ${request.question}"
-
+        val answer = answerService.getAnswer(request.question)
         val response: ChatServiceOuterClass.ChatResponse = ChatServiceOuterClass.ChatResponse
             .newBuilder()
             .setChatId(request.chatId)

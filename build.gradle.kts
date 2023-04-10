@@ -27,6 +27,9 @@ dependencies {
     implementation("io.grpc:grpc-all:1.54.0")
     implementation("com.google.protobuf:protobuf-java:3.22.2")
 
+    implementation("org.jsoup:jsoup:1.15.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
